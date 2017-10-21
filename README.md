@@ -4,7 +4,8 @@
 [![Travis status](https://travis-ci.org/JaroslawWiosna/regionalizer.svg?branch=master)](https://travis-ci.org/JaroslawWiosna/regionalizer)
 [![Coverage Status](https://coveralls.io/repos/github/JaroslawWiosna/regionalizer/badge.svg)](https://coveralls.io/github/JaroslawWiosna/regionalizer)
 
-# regionalizer [![Watchers](https://img.shields.io/github/watchers/JaroslawWiosna/regionalizer.svg?style=social&label=Watch)](https://github.com/JaroslawWiosna/regionalizer/watchers) [![Star](https://img.shields.io/github/stars/JaroslawWiosna/regionalizer.svg?style=social&label=Stars)](https://github.com/JaroslawWiosna/regionalizer/stargazers) [![Fork](https://img.shields.io/github/forks/JaroslawWiosna/regionalizer.svg?style=social&label=Fork)](https://github.com/JaroslawWiosna/regionalizer/network)
+#regionalizer[![Watchers](https \
+                          : //img.shields.io/github/watchers/JaroslawWiosna/regionalizer.svg?style=social&label=Watch)](https://github.com/JaroslawWiosna/regionalizer/watchers) [![Star](https://img.shields.io/github/stars/JaroslawWiosna/regionalizer.svg?style=social&label=Stars)](https://github.com/JaroslawWiosna/regionalizer/stargazers) [![Fork](https://img.shields.io/github/forks/JaroslawWiosna/regionalizer.svg?style=social&label=Fork)](https://github.com/JaroslawWiosna/regionalizer/network)
 
 > How to choose the best capital of a state and regions?
 
@@ -127,4 +128,3 @@ Database final order is as following: City name|Area|Population|Latitude|Longitu
 
 ## Special thanks to
 https://gronlier.fr/blog/2015/01/adding-code-coverage-to-your-c-project/
-

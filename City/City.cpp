@@ -11,49 +11,51 @@
 #include "City.hpp"
 
 City::City(std::string name,
-        std::size_t area,
-        std::size_t population,
-        std::string latitude,
-        std::string longitude) : 
-            name{name},
-	    area{area},
-	    population{population},
-	    latitude{latitude},
-	    longitude{longitude},
-            distanceToTheFarthest{0} {
-
+    std::size_t area,
+    std::size_t population,
+    std::string latitude,
+    std::string longitude)
+    : name{ name }
+    , area{ area }
+    , population{ population }
+    , latitude{ latitude }
+    , longitude{ longitude }
+    , distanceToTheFarthest{ 0 }
+{
 }
 
 City::City(std::string name,
-        std::string area,
-        std::string population,
-        std::string latitude,
-        std::string longitude) : 
-            name{name},
-	    area{0},
-	    population{0},
-	    latitude{latitude},
-	    longitude{longitude},
-            distanceToTheFarthest{0} {
+    std::string area,
+    std::string population,
+    std::string latitude,
+    std::string longitude)
+    : name{ name }
+    , area{ 0 }
+    , population{ 0 }
+    , latitude{ latitude }
+    , longitude{ longitude }
+    , distanceToTheFarthest{ 0 }
+{
     this->area = std::stoi(area);
     this->population = std::stoi(population);
 }
-    
-double City::distanceFrom(City differentCity) const {
-   // below we have Coordinates as decimal values
-   // It means that 21E30' would be 21.5
-   //               21E45' would be 21.75, and so on...
-   // TODO: move this explanation into doxygen comment
 
-   // A = this city
-   // B = differentCity
+double City::distanceFrom(City differentCity) const
+{
+    // below we have Coordinates as decimal values
+    // It means that 21E30' would be 21.5
+    //               21E45' would be 21.75, and so on...
+    // TODO: move this explanation into doxygen comment
 
-   // TODO: convert this->latitude to Alat
-   // TODO: convert this->longitude to Alon
-   // TODO: convert differentCity.latitude to Blat
-   // TODO: convert differentCity.latitude to Blon
+    // A = this city
+    // B = differentCity
+
+    // TODO: convert this->latitude to Alat
+    // TODO: convert this->longitude to Alon
+    // TODO: convert differentCity.latitude to Blat
+    // TODO: convert differentCity.latitude to Blon
     double Alat = std::stod(this->latitude);
-    double Alon = std::stod(this->longitude); 
+    double Alon = std::stod(this->longitude);
     double Blat = std::stod(differentCity.latitude);
     double Blon = std::stod(differentCity.longitude);
 
@@ -68,42 +70,50 @@ double City::distanceFrom(City differentCity) const {
     double deltaLat = Blat - Alat;
     double deltaLon = Blon - Alon;
 
-    double a = pow(sin(0.5 * deltaLat),2) + cos(Alat) * cos(Blat) * pow(sin(0.5 * deltaLon),2);
-    double c = 2 * atan2(sqrt(a),sqrt(1-a));
+    double a = pow(sin(0.5 * deltaLat), 2) + cos(Alat) * cos(Blat) * pow(sin(0.5 * deltaLon), 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
     double d = R * c;
 
     return d;
 }
 
-void City::setDistanceToTheFarthest(std::size_t distance) {
+void City::setDistanceToTheFarthest(std::size_t distance)
+{
     distanceToTheFarthest = distance;
 }
 
-std::string City::getName() const {
+std::string City::getName() const
+{
     return name;
 }
 
-std::size_t City::getArea() const {
+std::size_t City::getArea() const
+{
     return area;
 }
 
-std::size_t City::getPopulation() const {
+std::size_t City::getPopulation() const
+{
     return population;
 }
 
-std::string City::getLatitude() const {
+std::string City::getLatitude() const
+{
     return latitude;
 }
 
-std::string City::getLongitude() const {
+std::string City::getLongitude() const
+{
     return longitude;
 }
 
-std::size_t City::getDistanceToTheFarthest() const {
+std::size_t City::getDistanceToTheFarthest() const
+{
     return distanceToTheFarthest;
 }
 
-std::string City::getAllFields() {
+std::string City::getAllFields()
+{
     std::string res{};
     res += name;
     res += " ";
@@ -119,5 +129,3 @@ std::string City::getAllFields() {
     res += " ;";
     return res;
 }
-
-

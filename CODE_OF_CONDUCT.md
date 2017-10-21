@@ -31,4 +31,3 @@ Project moderators who do not follow or enforce the Code of Conduct in good fait
 Current moderators are the authors of this project:
 Jarosław Wiosna ( @jaroslawwiosna ) and Wojciech Mielczarek( @kermit10000000 )
 In case of any changes in the moderator team the change to this file will be applied.
-

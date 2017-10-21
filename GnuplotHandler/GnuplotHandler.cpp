@@ -12,7 +12,8 @@
 
 namespace GnuplotHandler {
 
-void saveDummyPlot() {
+void saveDummyPlot()
+{
     std::cout << "saveDummyPlot\n";
     std::ofstream script;
     script.open("script.gnu");
@@ -29,24 +30,26 @@ void saveDummyPlot() {
     script << std::endl;
 
     script.close();
-    system( "gnuplot script.gnu" );
-    system( "rm -f script.gnu" );
+    system("gnuplot script.gnu");
+    system("rm -f script.gnu");
 }
 
-bool isGnuplotInstalledOnHost() {
-    return ( 0 == system("gnuplot --version &> /dev/null") ? true : false );
+bool isGnuplotInstalledOnHost()
+{
+    return (0 == system("gnuplot --version &> /dev/null") ? true : false);
 }
 
-void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
+void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec)
+{
     std::ofstream data;
     data.open("HappinessLevel-onlyOneRegion.dat");
     for (const City& i : vec) {
         data << i.getLatitude();
-	data << " ";
+        data << " ";
         data << i.getLongitude();
-	data << " ";
-	data << "345345345";
-	data << std::endl;
+        data << " ";
+        data << "345345345";
+        data << std::endl;
     }
     data.close();
 
@@ -66,18 +69,18 @@ void plotHappinessLevelWhenWeHaveOnlyOneRegion(std::vector<City> vec) {
     script << std::endl;
 
     script.close();
-    system( "gnuplot HappinessLevel-onlyOneRegion.gnu" );
-    system( "rm -f HappinessLevel-onlyOneRegion.gnu" );
-    system( "rm -f HappinessLevel-onlyOneRegion.dat" );
-}    
+    system("gnuplot HappinessLevel-onlyOneRegion.gnu");
+    system("rm -f HappinessLevel-onlyOneRegion.gnu");
+    system("rm -f HappinessLevel-onlyOneRegion.dat");
+}
 
-void plotPopulation(const std::vector<City>& vec) {
+void plotPopulation(const std::vector<City>& vec)
+{
     std::ofstream data;
     data.open("population.dat");
 
     auto sortedVec = vec;
-    sort(sortedVec.begin(), sortedVec.end(), [](const City& lhs, 
-            const City& rhs) {
+    sort(sortedVec.begin(), sortedVec.end(), [](const City& lhs, const City& rhs) {
         return lhs.getPopulation() < rhs.getPopulation();
     });
     for (const City& i : sortedVec) {
@@ -114,10 +117,8 @@ void plotPopulation(const std::vector<City>& vec) {
     script << std::endl;
 
     script.close();
-    system( "gnuplot population.gnu" );
-//    system( "rm -f population.gnu" );
-//    system( "rm -f population.dat" );
+    system("gnuplot population.gnu");
+    //    system( "rm -f population.gnu" );
+    //    system( "rm -f population.dat" );
 }
-
 }
-

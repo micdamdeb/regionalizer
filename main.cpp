@@ -9,18 +9,19 @@
  *
  */
 
-#include "FlagParser.hpp"
 #include "DatabaseReader.hpp"
+#include "FlagParser.hpp"
 #include "GnuplotHandler.hpp"
 #include "VectorOfCities.hpp"
 #include "help.txt.hpp"
 
-#include <locale.h>
 #include <libintl.h>
+#include <locale.h>
 
 #define _(STRING) gettext(STRING)
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
     // Part 1 - start - parse argv and get databaseFile
     FlagParser parser(argc, argv);
     parser.printFlags();
@@ -31,28 +32,28 @@ int main(int argc, char *argv[]) {
     textdomain("regionalizer");
 
     if (!parser.hasKey("--help")) {
-	std::cout << _("Help not found, so moving on...");
+        std::cout << _("Help not found, so moving on...");
         std::cout << std::endl;
     } else {
-	std::cout << "Help found, so I am about to print help...";	
-	std::cout << std::endl;
+        std::cout << "Help found, so I am about to print help...";
+        std::cout << std::endl;
         std::cout << ___help_txt;
-	std::cout << "Aborting....";
-	std::cout << std::endl;
-	return -1;
+        std::cout << "Aborting....";
+        std::cout << std::endl;
+        return -1;
     }
     if (!flags["-list"].empty()) {
         std::cout << "Great! " << flags["-list"] << " is being processed";
-	std::cout << std::endl;
+        std::cout << std::endl;
     } else {
-	std::cout << "No list specified!";
-	std::cout << std::endl;
-	std::cout << "Aborting....";
-	std::cout << std::endl;
-	return -1;
-    } 
+        std::cout << "No list specified!";
+        std::cout << std::endl;
+        std::cout << "Aborting....";
+        std::cout << std::endl;
+        return -1;
+    }
 
-    std::string databaseFile{flags["-list"]};
+    std::string databaseFile{ flags["-list"] };
     // Part 1 - end
     // Part 2 - start - create vector of Cities based on databaseFile
     auto vec = DatabaseReader::readCitiesFromFile(databaseFile);
@@ -64,7 +65,7 @@ int main(int argc, char *argv[]) {
 
     // Part 2 - end
     // Part 3 - start - calculate distance from one city to the farthest
-    
+
     VectorOfCities::setDistanceToTheFarthestInTheWholeVector(vec);
 
     for (City i : vec) {
@@ -72,8 +73,8 @@ int main(int argc, char *argv[]) {
         std::cout << std::endl;
     }
     // Part 3 - end
-    // Part 4 - start - by brute force check which city would be 
-    // the best capital. We have only one region. 
+    // Part 4 - start - by brute force check which city would be
+    // the best capital. We have only one region.
     // This part is just for testing "happiness level" concept
     // "Happiness level" - value from 0 to 10.
     // 10 is the best, we have 10 when we are the capital, because the
@@ -88,10 +89,10 @@ int main(int argc, char *argv[]) {
         std::cout << "Gnuplot is not installed on host";
         std::cout << std::endl;
         std::cout << "Aborting...";
-	return -1;
+        return -1;
     }
     GnuplotHandler::saveDummyPlot();
     GnuplotHandler::plotPopulation(vec);
     GnuplotHandler::plotHappinessLevelWhenWeHaveOnlyOneRegion(vec);
     return 0;
-}    
+}
