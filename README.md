@@ -76,7 +76,7 @@ cd build
 cmake ..
 make
 make test
-./regionalizer -list ../database/cities_data
+./regionalizer --list ../database/cities_data
 ```
 
 ---
